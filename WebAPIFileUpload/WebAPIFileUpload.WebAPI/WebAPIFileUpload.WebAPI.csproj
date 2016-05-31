@@ -142,7 +142,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\FileUploadResult.cs" />
     <Compile Include="Infrastructure\MimeMultipartAttribute.cs" />
     <Compile Include="Infrastructure\UploadMultipartFormProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,6 +162,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAPIFileUpload.Common\WebAPIFileUpload.Common.csproj">
+      <Project>{0d95ca6f-1691-4738-86fd-5d303514de2f}</Project>
+      <Name>WebAPIFileUpload.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
