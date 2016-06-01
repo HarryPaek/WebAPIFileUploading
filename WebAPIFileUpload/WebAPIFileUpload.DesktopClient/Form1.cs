@@ -6,7 +6,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Handlers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -44,15 +46,27 @@ namespace WebAPIFileUpload.DesktopClient
             {
                 try
                 {
+                    //SimpleProgressHandler handler = new SimpleProgressHandler();
+                    //handler.HttpSendProgress += (object owner, System.Net.Http.Handlers.HttpProgressEventArgs evt) =>
+                    //{
+                    //    Debug.WriteLine("BytesTransferred =[{0}]", evt.BytesTransferred);
+
+                    //    //handler.BytesTransferred = evt.BytesTransferred;
+                    //    //Debug.WriteLine("ProgressPercentage {0} %", handler.ProgressPercentage);
+                    //};
+
                     HttpClient httpClient = new HttpClient();
+                    
                     // Read the files 
                     foreach (String file in openFileDialog1.FileNames)
                     {
-
                         var fileStream = File.Open(file, FileMode.Open);
                         var fileInfo = new FileInfo(file);
                         FileUploadResult uploadResult = null;
                         bool _fileUploaded = false;
+
+                        //handler.BytesTransferred = 0;
+                        //handler.FileSize = fileInfo.Length;
 
                         var content = new MultipartFormDataContent();
                         content.Add(new StreamContent(fileStream), "\"file\"", string.Format("\"{0}\"", fileInfo.Name));
