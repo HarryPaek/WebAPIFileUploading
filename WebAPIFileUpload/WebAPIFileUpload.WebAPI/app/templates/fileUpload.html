@@ -1,7 +1,23 @@
 ﻿<div class="row" ng-controller="fileUploadCtrl">
     <div class="col-xs-3">
         <div>
-            <input type="file" ngf-select="startUploading($files)" multiple>
+            <input type="file" name="filesToUpload" ngf-select="startUploading($files)" multiple>
+            <!--<input type="file" name="filesToUpload" ngf-select="startUploading($files)" ngf-max-size="500MB" ngf-model-invalid="errorFile">-->
+            <i>Please select file less than <strong>{{sizeLimit | bytes:2}}</strong> in size.</i>
+            <!--<i ng-show="errorFile">File too large {{errorFile.size | bytes:2}} : max <strong>{{sizeLimit | bytes:2}}</strong></i>-->
+        </div>
+        <div class="progress" ng-show="progress >= 0" style="margin-bottom: 0;">
+            <div class="progress-bar" role="progressbar" ng-style="{ 'width': progress + '%' }" ng-bind="progress + '%'" ></div>
+        </div>
+        <br />
+        <br />
+        <div class="panel panel-default" ng-repeat="uploadingFile in UploadingFiles track by $index" ng-if="UploadingFiles">
+            <div>
+                <strong>{{uploadingFile.Name}}</strong>
+            </div>
+            <div class="progress" ng-show="progress >= 0" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploadingFile.Progress + '%' }" ng-bind="uploadingFile.Progress + '%'"></div>
+            </div>
         </div>
     </div>
     <div class="col-xs-9">
@@ -20,7 +36,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                File total bytes: <span style="color:black">{{uploadedFile.FileLength}}</span>
+                File total bytes: <span style="color:black">{{uploadedFile.FileLength | bytes:2}}</span>
             </div>
         </div>
     </div>

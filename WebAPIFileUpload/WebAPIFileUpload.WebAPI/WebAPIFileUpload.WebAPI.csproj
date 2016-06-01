@@ -96,6 +96,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\fileUploadCtrl.js" />
+    <Content Include="app\filters\bytesFilter.js" />
     <Content Include="app\templates\fileUpload.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
