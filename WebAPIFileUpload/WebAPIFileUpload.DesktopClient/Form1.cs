@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Handlers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WebAPIFileUpload.Common.Infrastructure;
-using WebAPIFileUpload.DesktopClient.Utilities;
+using WebAPIFileUpload.Common.Utilities;
 
 namespace WebAPIFileUpload.DesktopClient
 {
@@ -144,7 +136,15 @@ namespace WebAPIFileUpload.DesktopClient
 
         private string uploadServiceBaseAddress
         {
-            get { return Configurations.GetServiceAddress(); }
+            get
+            {
+                var serviceAddress = Configurations.GetServiceAddress();
+                // var serviceAddress = Configurations.GetServiceAddress("SelfhostBaseServiceAddress");
+
+                AddMessage(string.Format("Connected to Service Address = [{0}]", serviceAddress));
+
+                return serviceAddress;
+            }
         }
     }
 }

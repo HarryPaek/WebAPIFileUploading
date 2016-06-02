@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using WebAPIFileUpload.Common.Infrastructure;
+using WebAPIFileUpload.Common.Utilities;
 using WebAPIFileUpload.WebAPI.Infrastructure;
 
 namespace WebAPIFileUpload.WebAPI.Controllers
@@ -17,7 +18,8 @@ namespace WebAPIFileUpload.WebAPI.Controllers
         {
             try
             {
-                var uploadPath = HttpContext.Current.Server.MapPath("~/Uploads");
+                var uploadPath = Configurations.GetUploadFolder("UploadFolder");
+                uploadPath = HttpContext.Current != null ? HttpContext.Current.Server.MapPath(uploadPath) : uploadPath;
 
                 var multipartFormDataStreamProvider = new UploadMultipartFormProvider(uploadPath);
 

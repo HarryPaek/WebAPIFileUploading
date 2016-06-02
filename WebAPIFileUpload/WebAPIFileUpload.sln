@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIFileUpload.DesktopCli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIFileUpload.Common", "WebAPIFileUpload.Common\WebAPIFileUpload.Common.csproj", "{0D95CA6F-1691-4738-86FD-5D303514DE2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIFileUpload.WebAPI.SelfHosting", "WebAPIFileUpload.WebAPI.SelfHosting\WebAPIFileUpload.WebAPI.SelfHosting.csproj", "{E7CD05E3-B4FA-4924-8806-55CE123E9766}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0D95CA6F-1691-4738-86FD-5D303514DE2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D95CA6F-1691-4738-86FD-5D303514DE2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D95CA6F-1691-4738-86FD-5D303514DE2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7CD05E3-B4FA-4924-8806-55CE123E9766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7CD05E3-B4FA-4924-8806-55CE123E9766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7CD05E3-B4FA-4924-8806-55CE123E9766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7CD05E3-B4FA-4924-8806-55CE123E9766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
