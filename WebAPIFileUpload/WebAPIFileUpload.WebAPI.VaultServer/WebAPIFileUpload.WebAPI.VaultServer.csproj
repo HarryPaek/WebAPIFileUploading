@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7CD05E3-B4FA-4924-8806-55CE123E9766}</ProjectGuid>
+    <ProjectGuid>{CD71F46D-C61D-47B7-A95A-D32B18C4F310}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebAPIFileUpload.WebAPI.SelfHosting</RootNamespace>
-    <AssemblyName>WebAPIFileUpload.WebAPI.SelfHosting</AssemblyName>
+    <RootNamespace>WebAPIFileUpload.WebAPI.VaultServer</RootNamespace>
+    <AssemblyName>WebAPIFileUpload.WebAPI.VaultServer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -80,10 +80,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FileRepository\.gitignore">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebAPIFileUpload.Common\WebAPIFileUpload.Common.csproj">
@@ -94,12 +97,6 @@
       <Project>{db742e5d-f959-4fd1-888d-e35d074bdfc4}</Project>
       <Name>WebAPIFileUpload.WebAPI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Uploads\.gitignore">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

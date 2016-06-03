@@ -9,13 +9,14 @@ using WebAPIFileUpload.Common.Infrastructure;
 using WebAPIFileUpload.Common.Utilities;
 using WebAPIFileUpload.WebAPI.Infrastructure;
 using WebAPIFileUpload.WebAPI.Provider;
-using WebAPIFileUpload.WebAPI.Services;
 
 namespace WebAPIFileUpload.WebAPI.Controllers
 {
-    public class FileUploadController : ApiController
+    [RoutePrefix("api/vault")]
+    public class VaultController : ApiController
     {
         [MimeMultipart]
+        [Route("upload")]
         public async Task<FileUploadResult> Post()
         {
             try
@@ -23,23 +24,16 @@ namespace WebAPIFileUpload.WebAPI.Controllers
                 IFileServiceProvider fileServiceProvider = new WebAPIFileServiceProvider();
                 var fileUploadResult = await fileServiceProvider.Upload(Request);
 
-                if (UseVaultService())
+                if (UseVaultReplicationService())  //TO DO
                 {
-                    IVaultService vaultService = new WebAPIVaultService();
-                    var vaultUploadResult = vaultService.Save(fileUploadResult.LocalFilePath);
-
-                    if (vaultUploadResult != null)
-                        System.Diagnostics.Debug.WriteLine("Vault Upload Result = [{0}]", new[] { vaultUploadResult });
-                    else
-                        System.Diagnostics.Debug.WriteLine("Vault Upload was failed!!!");
+                    //Run Replication Service
+                    RunReplicationService(fileUploadResult);
                 }
-
-                DeleteTempFileInAppServer(fileUploadResult);
 
                 // Create response
                 return fileUploadResult;
             }
-            catch(HttpException httpex)
+            catch (HttpException httpex)
             {
                 System.Diagnostics.Debug.WriteLine("");
                 System.Diagnostics.Debug.WriteLine(httpex.StackTrace);
@@ -47,7 +41,7 @@ namespace WebAPIFileUpload.WebAPI.Controllers
 
                 throw httpex;
             }
-            catch(IOException ioex)
+            catch (IOException ioex)
             {
                 System.Diagnostics.Debug.WriteLine("");
                 System.Diagnostics.Debug.WriteLine(ioex.StackTrace);
@@ -55,7 +49,7 @@ namespace WebAPIFileUpload.WebAPI.Controllers
 
                 throw ioex;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("");
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
@@ -65,14 +59,15 @@ namespace WebAPIFileUpload.WebAPI.Controllers
             }
         }
 
-        private void DeleteTempFileInAppServer(FileUploadResult fileUploadResult)
+        private void RunReplicationService(FileUploadResult fileUploadResult)
         {
-            return; // TO DO
+            //TO DO
+            throw new NotImplementedException();
         }
 
-        private bool UseVaultService()
+        private bool UseVaultReplicationService()
         {
-            return Configurations.GetUseVaultServiceFlag();
+            return false;
         }
     }
 }

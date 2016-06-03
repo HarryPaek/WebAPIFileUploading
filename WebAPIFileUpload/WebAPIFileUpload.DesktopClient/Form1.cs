@@ -138,8 +138,8 @@ namespace WebAPIFileUpload.DesktopClient
         {
             get
             {
-                var serviceAddress = Configurations.GetServiceAddress();
-                // var serviceAddress = Configurations.GetServiceAddress("SelfhostBaseServiceAddress");
+                // var serviceAddress = Configurations.GetServiceAddress();
+                var serviceAddress = Configurations.GetServiceAddress("SelfhostBaseServiceAddress");
 
                 AddMessage(string.Format("Connected to Service Address = [{0}]", serviceAddress));
 
